@@ -32,6 +32,7 @@
                 android:text="Дон мафии" />
 
             <Button
+                style="@style/Widget.Material3.Button.TonalButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onMafiaDonDecrement"
@@ -45,8 +46,9 @@
                 android:text="0" />
 
             <Button
+                style="@style/Widget.Material3.Button.TonalButton"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:onClick="onMafiaDonIncrement"
                 android:text="+" />
         </LinearLayout>
@@ -64,6 +66,7 @@
                 android:text="Мафия" />
 
             <Button
+                style="@style/Widget.Material3.Button.TonalButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onMafiaDecrement"
@@ -77,6 +80,7 @@
                 android:text="0" />
 
             <Button
+                style="@style/Widget.Material3.Button.TonalButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onMafiaIncrement"
@@ -96,6 +100,7 @@
                 android:text="Комиссар" />
 
             <Button
+                style="@style/Widget.Material3.Button.TonalButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onCommissarDecrement"
@@ -109,6 +114,7 @@
                 android:text="0" />
 
             <Button
+                style="@style/Widget.Material3.Button.TonalButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onCommissarIncrement"
@@ -128,6 +134,7 @@
                 android:text="Доктор" />
 
             <Button
+                style="@style/Widget.Material3.Button.TonalButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onDoctorDecrement"
@@ -141,6 +148,7 @@
                 android:text="0" />
 
             <Button
+                style="@style/Widget.Material3.Button.TonalButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onDoctorIncrement"
@@ -156,6 +164,7 @@
 
         <Button
             android:id="@+id/btnStart"
+            style="@style/Widget.Material3.Button.TonalButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

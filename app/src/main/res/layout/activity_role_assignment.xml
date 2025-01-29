@@ -20,8 +20,9 @@
 
     <Button
         android:id="@+id/confirmRolesButton"
+        style="@style/Widget.Material3.Button.TonalButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Подтвердить роли"/>
+        android:text="Подтвердить роли" />
 
 </LinearLayout>
