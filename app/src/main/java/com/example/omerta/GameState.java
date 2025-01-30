@@ -1,10 +1,9 @@
 package com.example.omerta;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GameState implements Serializable {
+public class GameState {
     private static GameState instance;
     private List<Player> players = new ArrayList<>();
     private int totalPlayers = 15;
