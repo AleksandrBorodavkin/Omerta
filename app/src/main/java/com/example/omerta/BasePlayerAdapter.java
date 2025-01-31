@@ -5,10 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -45,25 +45,25 @@ public abstract class BasePlayerAdapter extends RecyclerView.Adapter<BasePlayerA
         protected TextView playerName;
         protected TextView playerRole;
         protected CheckBox killCheckbox;
-        protected LinearLayout linearLayout;
+        protected CardView playerCardView;
 
         ViewHolder(View itemView) {
             super(itemView);
             playerName = itemView.findViewById(R.id.playerName);
             playerRole = itemView.findViewById(R.id.playerRole);
             killCheckbox = itemView.findViewById(R.id.killCheckbox);
-            linearLayout = itemView.findViewById(R.id.playerLayout);
+            playerCardView = itemView.findViewById(R.id.playerCardView);
         }
 
         void bind(Player player) {
             // Устанавливаем цвет фона в зависимости от команды
             if (player.getRole().getTeam() == Role.Team.RED) {
-                linearLayout.setBackgroundColor(Color.RED);
+                playerCardView.setCardBackgroundColor(Color.RED);
                 playerName.setTextColor(Color.BLACK);
                 playerRole.setTextColor(Color.BLACK);
                 killCheckbox.setTextColor(Color.BLACK);
             } else if (player.getRole().getTeam() == Role.Team.BLACK) {
-                linearLayout.setBackgroundColor(Color.BLACK);
+                playerCardView.setCardBackgroundColor(Color.BLACK);
                 playerName.setTextColor(Color.WHITE);
                 playerRole.setTextColor(Color.WHITE);
                 killCheckbox.setTextColor(Color.WHITE);
@@ -76,7 +76,7 @@ public abstract class BasePlayerAdapter extends RecyclerView.Adapter<BasePlayerA
             killCheckbox.setChecked(!player.isAlive());
 
             if (!player.isAlive()) {
-                linearLayout.setAlpha(0.3f);
+                playerCardView.setAlpha(0.3f);
             }
 
             killCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {

@@ -62,7 +62,7 @@ public class DayActivity extends BaseActivity {
 
         @Override
         protected int getLayoutResource() {
-            return R.layout.item_day;
+            return R.layout.item_player;
         }
 
         static class DayViewHolder extends ViewHolder {
@@ -74,7 +74,7 @@ public class DayActivity extends BaseActivity {
                 super(itemView);
                 timerTextView = itemView.findViewById(R.id.timerTextView);
 
-                linearLayout.setOnClickListener(v -> toggleTimer());
+                playerCardView.setOnClickListener(v -> toggleTimer());
             }
 
             @Override
@@ -98,6 +98,7 @@ public class DayActivity extends BaseActivity {
                     @Override
                     public void onTick(long millisUntilFinished) {
                         int seconds = (int) (millisUntilFinished / 1000);
+//                        playerCardView.setCardBackgroundColor(Color.YELLOW);
                         timerTextView.setText(String.format(Locale.getDefault(), "00:%02d", seconds));
                     }
 
@@ -105,7 +106,7 @@ public class DayActivity extends BaseActivity {
                     public void onFinish() {
                         timerTextView.setAlpha(0.5f);
                         timerTextView.setText("00:00");
-                        timerTextView.setTextColor(Color.RED);
+                        timerTextView.setTextColor(Color.GRAY);
                         isTimerRunning = false;
                     }
                 }.start();
@@ -116,7 +117,7 @@ public class DayActivity extends BaseActivity {
                 if (countDownTimer != null) {
                     countDownTimer.cancel();
                     timerTextView.setVisibility(View.GONE);
-                    linearLayout.setAlpha(1.0f);
+                    playerCardView.setAlpha(1.0f);
                     isTimerRunning = false;
                 }
             }
