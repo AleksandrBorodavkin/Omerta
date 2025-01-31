@@ -1,14 +1,21 @@
 package com.example.omerta;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+import java.util.Locale;
 
 
 public class DayActivity extends BaseActivity {
@@ -57,7 +64,73 @@ public class DayActivity extends BaseActivity {
         protected int getLayoutResource() {
             return R.layout.item_day;
         }
+
+        static class DayViewHolder extends ViewHolder {
+            private TextView timerTextView;
+            private CountDownTimer countDownTimer;
+            private boolean isTimerRunning = false;
+
+            DayViewHolder(View itemView) {
+                super(itemView);
+                timerTextView = itemView.findViewById(R.id.timerTextView);
+
+                linearLayout.setOnClickListener(v -> toggleTimer());
+            }
+
+            @Override
+            void bind(Player player) {
+                super.bind(player);
+                timerTextView.setText("00:40");
+                timerTextView.setVisibility(View.GONE);
+            }
+
+            private void toggleTimer() {
+                if (isTimerRunning) {
+                    stopTimer();
+                } else {
+                    startTimer();
+                }
+            }
+
+            private void startTimer() {
+                timerTextView.setVisibility(View.VISIBLE);
+                countDownTimer = new CountDownTimer(40000, 1000) {
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        int seconds = (int) (millisUntilFinished / 1000);
+                        timerTextView.setText(String.format(Locale.getDefault(), "00:%02d", seconds));
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        timerTextView.setAlpha(0.5f);
+                        timerTextView.setText("00:00");
+                        timerTextView.setTextColor(Color.RED);
+                        isTimerRunning = false;
+                    }
+                }.start();
+                isTimerRunning = true;
+            }
+
+            private void stopTimer() {
+                if (countDownTimer != null) {
+                    countDownTimer.cancel();
+                    timerTextView.setVisibility(View.GONE);
+                    linearLayout.setAlpha(1.0f);
+                    isTimerRunning = false;
+                }
+            }
+        }
+
+        @NonNull
+        @Override
+        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(getLayoutResource(), parent, false);
+            return new DayViewHolder(view);
+        }
     }
+
 }
 //public class DayActivity extends BaseActivity {
 //    private DayAdapter adapter;
