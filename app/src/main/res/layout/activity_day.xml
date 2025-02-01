@@ -1,39 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="10dp"
+>
 
-    <TextView
 
+    <!-- Контейнер для карточек с количеством игроков -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="День"
-        android:textSize="30sp"/>
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        >
 
-    <TextView
-        android:id="@+id/playerQuantity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="17sp" />
+        <!-- Карточка для черных игроков -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/black">
 
+            <TextView
+                android:id="@+id/playerQuantityBlack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="25dp"
+            android:layout_marginStart="25dp"
+            android:text="День"
+            android:textAlignment="center"
+            android:textSize="30sp" />
 
+        <!-- Карточка для красных игроков -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="25dp"
+            android:layout_marginStart="25dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/red">
 
+            <TextView
+                android:id="@+id/playerQuantityRed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="тест"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <!-- RecyclerView для отображения списка -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/dayRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.95"/>
+        android:layout_weight="1"
+        android:layout_marginBottom="16dp"
+        android:overScrollMode="never"
+        android:clipToPadding="false"
+        android:paddingBottom="2dp" />
 
+    <!-- Кнопка завершения дня -->
     <Button
         android:id="@+id/endDayButton"
         style="@style/Widget.Material3.Button.TonalButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Город засыпает" />
-
+        android:text="Город засыпает"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:paddingVertical="12dp"
+        android:textColor="@color/white" />
 </LinearLayout>

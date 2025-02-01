@@ -3,11 +3,13 @@ package com.example.omerta;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
+import com.example.omerta.controller.BaseActivity;
+import com.example.omerta.model.Player;
 
 import java.util.List;
 
@@ -41,8 +43,10 @@ public class NightActivity extends BaseActivity {
                 finish();
             }
         });
-        TextView playerQuantity = findViewById(R.id.playerQuantity);
-        updateAlivePlayersCount(playerQuantity);
+//        TextView playerQuantityBlack = findViewById(R.id.playerQuantityBlack);
+//        updateAlivePlayersCountBlack(playerQuantityBlack);
+//        TextView playerQuantityRed = findViewById(R.id.playerQuantityRed);
+//        updateAlivePlayersCountRed(playerQuantityRed);
 
     }
 

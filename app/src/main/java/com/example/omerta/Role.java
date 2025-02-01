@@ -1,6 +1,8 @@
 package com.example.omerta;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Map;
 
 public enum Role implements Serializable {
     MAFIA_DON("Дон мафии", Team.BLACK),
@@ -9,6 +11,12 @@ public enum Role implements Serializable {
     COMMISSAR("Комиссар", Team.RED),
     DOCTOR("Доктор", Team.RED),
     CITIZEN("Мирный житель", Team.RED);
+
+//    public static Map<String, Team> roles = Map.of("Дон мафии", Team.BLACK);
+//
+////    public static void addRole(String role, String color){
+////        roles.put(role, color);
+////    };
 
     private final String displayName;
     private final Team team;

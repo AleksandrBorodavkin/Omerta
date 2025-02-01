@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.omerta.model.Player;
+
 import java.util.List;
 
 public abstract class BasePlayerAdapter extends RecyclerView.Adapter<BasePlayerAdapter.ViewHolder> {
@@ -80,7 +82,7 @@ public abstract class BasePlayerAdapter extends RecyclerView.Adapter<BasePlayerA
             }
 
             killCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                player.setAlive(isChecked);
+                player.setAlive(!isChecked);
             });
         }
     }

@@ -14,6 +14,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.omerta.controller.BaseActivity;
+import com.example.omerta.model.Player;
+
 import java.util.List;
 import java.util.Locale;
 
@@ -28,8 +31,10 @@ public class DayActivity extends BaseActivity {
         GameState gameState = GameState.getInstance();
         List<Player> players = gameState.getPlayers();
 
-        TextView playerQuantity = findViewById(R.id.playerQuantity);
-        updateAlivePlayersCount(playerQuantity);
+        TextView playerQuantityBlack = findViewById(R.id.playerQuantityBlack);
+        updateAlivePlayersCountBlack(playerQuantityBlack);
+        TextView playerQuantityRed = findViewById(R.id.playerQuantityRed);
+        updateAlivePlayersCountRed(playerQuantityRed);
 
         // Настройка RecyclerView
         RecyclerView recyclerView = findViewById(R.id.dayRecyclerView);
@@ -53,6 +58,7 @@ public class DayActivity extends BaseActivity {
         });
 
     }
+
 
     public class DayAdapter extends BasePlayerAdapter {
 
@@ -78,7 +84,7 @@ public class DayActivity extends BaseActivity {
             }
 
             @Override
-            void bind(Player player) {
+            public void bind(Player player) {
                 super.bind(player);
                 timerTextView.setText("00:40");
                 timerTextView.setVisibility(View.GONE);

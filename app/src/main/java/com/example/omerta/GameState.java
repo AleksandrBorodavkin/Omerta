@@ -1,10 +1,13 @@
 package com.example.omerta;
+import com.example.omerta.model.Player;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class GameState {
     private static GameState instance;
+    private  static int dayCount;
     private List<Player> players = new ArrayList<>();
     private int totalPlayers = 15;
     private int mafia = 3;
