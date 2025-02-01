@@ -1,13 +1,22 @@
 package com.example.omerta;
+
 import com.example.omerta.model.Player;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Data
 public class GameState {
     private static GameState instance;
-    private  static int dayCount;
+    //TODO
+    private static int dayCount;
+    // Геттеры и сеттеры
     private List<Player> players = new ArrayList<>();
     private int totalPlayers = 15;
     private int mafia = 3;
@@ -121,35 +130,6 @@ public class GameState {
                 .collect(Collectors.toList());
     }
 
-    // Геттеры и сеттеры
-    public List<Player> getPlayers() {
-        return players;
-    }
-
-    public void setPlayers(List<Player> players) {
-        this.players = players;
-    }
-
-    public int getTotalPlayers() {
-        return totalPlayers;
-    }
-
-    public void setTotalPlayers(int total) {
-        this.totalPlayers = total;
-    }
-
-    public int getMafia() {
-        return mafia;
-    }
-
-    public int getCommissar() {
-        return commissar;
-    }
-
-    public int getDoctor() {
-        return doctor;
-    }
-
     public void incrementMafia() {
         mafia++;
     }
@@ -182,11 +162,4 @@ public class GameState {
         if (mafiaDon > 0) mafiaDon--;
     }
 
-    public int getMafiaDon() {
-        return mafiaDon;
-    }
-
-    public void setMafiaDon(int mafiaDon) {
-        this.mafiaDon = mafiaDon;
-    }
 }
