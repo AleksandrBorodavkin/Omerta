@@ -53,7 +53,7 @@ public class GameState {
 
         switch (role) {
             case MAFIA -> currentMafia++;
-            case MAFIA_DON -> currentMafiaDon++;
+            case DON -> currentMafiaDon++;
             case COMMISSAR -> currentCommissar++;
             case DOCTOR -> currentDoctor++;
         }
@@ -64,7 +64,7 @@ public class GameState {
 
         switch (role) {
             case MAFIA -> currentMafia = Math.max(0, currentMafia - 1);
-            case MAFIA_DON -> currentMafiaDon = Math.max(0, currentMafiaDon - 1);
+            case DON -> currentMafiaDon = Math.max(0, currentMafiaDon - 1);
             case COMMISSAR -> currentCommissar = Math.max(0, currentCommissar - 1);
             case DOCTOR -> currentDoctor = Math.max(0, currentDoctor - 1);
         }
@@ -74,7 +74,7 @@ public class GameState {
     public boolean isRoleAvailable(Role role) {
         return switch (role) {
             case MAFIA -> currentMafia < maxMafia;
-            case MAFIA_DON -> currentMafiaDon < maxMafiaDon;
+            case DON -> currentMafiaDon < maxMafiaDon;
             case COMMISSAR -> currentCommissar < maxCommissar;
             case DOCTOR -> currentDoctor < maxDoctor;
             default -> true;
