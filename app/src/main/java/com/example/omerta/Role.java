@@ -1,29 +1,30 @@
 package com.example.omerta;
 
-import java.io.Serializable;
-import java.util.Arrays;
-import java.util.Map;
+import lombok.Getter;
 
-public enum Role implements Serializable {
-    MAFIA_DON("Дон мафии", Team.BLACK),
-    MAFIA("Мафия", Team.BLACK),
-    MANIAC("Маньяк", Team.BLACK),
-    COMMISSAR("Комиссар", Team.RED),
-    DOCTOR("Доктор", Team.RED),
-    CITIZEN("Мирный житель", Team.RED);
+@Getter
+public enum Role   {
+    // Черные (Мафия, убийцы, преступники)
+    DON("Дон мафии", Team.BLACK, "Глава мафии, решает, кого убить"),
+    MAFIA("Мафия", Team.BLACK, "Обычный член мафии, участвует в голосовании на убийство"),
+    MANIAC("Маньяк", Team.BLACK, "Действует в одиночку, убивает каждую ночь"),
+    YAKUZA("Якудза", Team.BLACK, "Может пожертвовать собой, чтобы завербовать мирного жителя"),
 
-//    public static Map<String, Team> roles = Map.of("Дон мафии", Team.BLACK);
-//
-////    public static void addRole(String role, String color){
-////        roles.put(role, color);
-////    };
+    // Красные (Граждане, защитники, правоохранители)
+    COMMISSAR("Комиссар", Team.RED, "Проверяет людей на принадлежность к мафии"),
+    SHERIFF("Шериф", Team.RED, "Имеет единственный выстрел за игру, может ликвидировать подозреваемого"),
+    DOCTOR("Доктор", Team.RED, "Может лечить одного человека за ночь, предотвращая убийство"),
+    CITIZEN("Мирный житель", Team.RED, "Обычный житель без особых способностей");
 
     private final String displayName;
     private final Team team;
+    private final String description;
 
+    // Перечисление команд (мафия и граждане)
+    @Getter
     public enum Team {
-        RED("Красные"),
-        BLACK("Черные");
+        RED("Красные"), // Мирные жители
+        BLACK("Черные"); // Преступники
 
         private final String name;
 
@@ -31,22 +32,12 @@ public enum Role implements Serializable {
             this.name = name;
         }
 
-        public String getName() {
-            return name;
-        }
     }
 
-    Role(String displayName, Team team) {
+    Role(String displayName, Team team, String description) {
         this.displayName = displayName;
         this.team = team;
-    }
-
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public Team getTeam() {
-        return team;
+        this.description = description;
     }
 
 }
