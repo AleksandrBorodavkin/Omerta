@@ -19,12 +19,19 @@ public class GameState {
     private int maxMafiaDon = 1;
     private int maxCommissar = 1;
     private int maxDoctor = 1;
+    private int maxManiac = 1;
+    private int maxYakuza = 0;
+    private int maxSheriff = 0;
 
     // Текущие счетчики (начинаются с 0)
     private int currentMafia = 0;
     private int currentMafiaDon = 0;
     private int currentCommissar = 0;
     private int currentDoctor = 0;
+    private int currentManiac = 0;
+    private int currentYakuza = 0;
+    private int currentSheriff = 0;
+
 
     // Приватный конструктор для реализации Singleton
     private GameState() {
@@ -56,6 +63,9 @@ public class GameState {
             case DON -> currentMafiaDon++;
             case COMMISSAR -> currentCommissar++;
             case DOCTOR -> currentDoctor++;
+            case MANIAC -> currentManiac++;
+            case YAKUZA -> currentYakuza++;
+            case SHERIFF -> currentSheriff++;
         }
     }
 
@@ -67,6 +77,9 @@ public class GameState {
             case DON -> currentMafiaDon = Math.max(0, currentMafiaDon - 1);
             case COMMISSAR -> currentCommissar = Math.max(0, currentCommissar - 1);
             case DOCTOR -> currentDoctor = Math.max(0, currentDoctor - 1);
+            case MANIAC -> currentManiac = Math.max(0, currentManiac - 1);
+            case YAKUZA -> currentYakuza = Math.max(0, currentYakuza - 1);
+            case SHERIFF -> currentSheriff = Math.max(0, currentSheriff - 1);
         }
     }
 
@@ -77,6 +90,9 @@ public class GameState {
             case DON -> currentMafiaDon < maxMafiaDon;
             case COMMISSAR -> currentCommissar < maxCommissar;
             case DOCTOR -> currentDoctor < maxDoctor;
+            case MANIAC -> currentManiac < maxManiac;
+            case YAKUZA -> currentYakuza < maxYakuza;
+            case SHERIFF -> currentSheriff < maxSheriff;
             default -> true;
         };
     }
@@ -103,17 +119,22 @@ public class GameState {
         dayCount = 1;    // Сбрасываем счетчик дней к начальному значению
 
         // Сбрасываем максимальные лимиты ролей к дефолтным значениям
-        maxMafiaDon = 1;
         maxMafia = 3;
+        maxMafiaDon = 1;
         maxCommissar = 1;
         maxDoctor = 1;
+        maxManiac = 0;
+        maxYakuza = 0;
+        maxSheriff = 0;
 
-        // Обнуляем текущие счетчики назначенных ролей
-        currentMafiaDon = 0;
+        // Текущие счетчики (начинаются с 0)
         currentMafia = 0;
+        currentMafiaDon = 0;
         currentCommissar = 0;
         currentDoctor = 0;
-        totalPlayers = 15; // Сбрасываем общее количество игроков к дефолтному
+        currentManiac = 0;
+        currentYakuza = 0;
+        currentSheriff = 0;
     }
 
     public void incrementDayCount() {
