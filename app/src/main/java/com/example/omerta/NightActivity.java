@@ -3,6 +3,7 @@ package com.example.omerta;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,6 +23,14 @@ public class NightActivity extends BaseActivity {
 
         GameState gameState = GameState.getInstance();
         List<Player> players = gameState.getPlayers();
+
+        TextView playerQuantityBlack = findViewById(R.id.playerQuantityBlack);
+        updateAlivePlayersCountBlack(playerQuantityBlack);
+        TextView tvNightCount = findViewById(R.id.tvNightCount);
+        updateNightIncrementCount(tvNightCount);
+        TextView playerQuantityRed = findViewById(R.id.playerQuantityRed);
+        updateAlivePlayersCountRed(playerQuantityRed);
+
 
         // Настройка RecyclerView
         RecyclerView recyclerView = findViewById(R.id.nightRecyclerView);
@@ -43,11 +52,6 @@ public class NightActivity extends BaseActivity {
                 finish();
             }
         });
-//        TextView playerQuantityBlack = findViewById(R.id.playerQuantityBlack);
-//        updateAlivePlayersCountBlack(playerQuantityBlack);
-//        TextView playerQuantityRed = findViewById(R.id.playerQuantityRed);
-//        updateAlivePlayersCountRed(playerQuantityRed);
-
     }
 
     public class NightAdapter extends BasePlayerAdapter {
