@@ -1,174 +1,201 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <!-- Общее количество игроков -->
+    <EditText
+        android:id="@+id/etTotalPlayers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Общее количество игроков"
+        android:inputType="number"
+        android:layout_marginBottom="16dp"
+        android:textColor="?attr/colorOnSurface"/>
+
+    <!-- Дон мафии -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="8dp">
 
-        <!-- Общее количество игроков -->
-        <EditText
-            android:id="@+id/etTotalPlayers"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Общее количество игроков"
-            android:inputType="number" />
-
-        <!-- Дон мафии -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Дон мафии" />
-
-            <Button
-                style="@style/Widget.Material3.Button.TonalButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onMafiaDonDecrement"
-                android:text="-" />
-
-            <TextView
-                android:id="@+id/tvMafiaDonCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="8dp"
-                android:text="0" />
-
-            <Button
-                style="@style/Widget.Material3.Button.TonalButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:onClick="onMafiaDonIncrement"
-                android:text="+" />
-        </LinearLayout>
-
-        <!-- Мафия -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Мафия" />
-
-            <Button
-                style="@style/Widget.Material3.Button.TonalButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onMafiaDecrement"
-                android:text="-" />
-
-            <TextView
-                android:id="@+id/tvMafiaCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="8dp"
-                android:text="0" />
-
-            <Button
-                style="@style/Widget.Material3.Button.TonalButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onMafiaIncrement"
-                android:text="+" />
-        </LinearLayout>
-
-        <!-- Комиссар -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Комиссар" />
-
-            <Button
-                style="@style/Widget.Material3.Button.TonalButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onCommissarDecrement"
-                android:text="-" />
-
-            <TextView
-                android:id="@+id/tvCommissarCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="8dp"
-                android:text="0" />
-
-            <Button
-                style="@style/Widget.Material3.Button.TonalButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onCommissarIncrement"
-                android:text="+" />
-        </LinearLayout>
-
-        <!-- Доктор -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Доктор" />
-
-            <Button
-                style="@style/Widget.Material3.Button.TonalButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onDoctorDecrement"
-                android:text="-" />
-
-            <TextView
-                android:id="@+id/tvDoctorCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="8dp"
-                android:text="0" />
-
-            <Button
-                style="@style/Widget.Material3.Button.TonalButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onDoctorIncrement"
-                android:text="+" />
-        </LinearLayout>
-
-        <!-- Мирные жители -->
         <TextView
-            android:id="@+id/tvCitizenCount"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Мирные жители: 0" />
+            android:layout_weight="1"
+            android:text="Дон мафии"
+            android:textSize="16sp"
+            android:textColor="?attr/colorOnSurface" />
 
         <Button
-            android:id="@+id/btnStart"
             style="@style/Widget.Material3.Button.TonalButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Начать игру" />
+            android:onClick="onMafiaDonDecrement"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/tvMafiaDonCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:text="0"
+            android:textSize="16sp"
+            android:textColor="?attr/colorOnSurface" />
+
+        <Button
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onMafiaDonIncrement"
+            android:text="+" />
     </LinearLayout>
+
+    <!-- Мафия -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Мафия"
+            android:textSize="16sp"
+            android:textColor="?attr/colorOnSurface" />
+
+        <Button
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onMafiaDecrement"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/tvMafiaCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:text="0"
+            android:textSize="16sp"
+            android:textColor="?attr/colorOnSurface" />
+
+        <Button
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onMafiaIncrement"
+            android:text="+" />
+    </LinearLayout>
+
+    <!-- Комиссар -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Комиссар"
+            android:textSize="16sp"
+            android:textColor="?attr/colorOnSurface" />
+
+        <Button
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onCommissarDecrement"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/tvCommissarCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:text="0"
+            android:textSize="16sp"
+            android:textColor="?attr/colorOnSurface" />
+
+        <Button
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onCommissarIncrement"
+            android:text="+" />
+    </LinearLayout>
+
+    <!-- Доктор -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Доктор"
+            android:textSize="16sp"
+            android:textColor="?attr/colorOnSurface" />
+
+        <Button
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onDoctorDecrement"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/tvDoctorCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:text="0"
+            android:textSize="16sp"
+            android:textColor="?attr/colorOnSurface" />
+
+        <Button
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onDoctorIncrement"
+            android:text="+" />
+    </LinearLayout>
+
+    <!-- Мирные жители -->
+    <TextView
+        android:id="@+id/tvCitizenCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Мирные жители: 0"
+        android:textSize="16sp"
+        android:textColor="?attr/colorOnSurface"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Кнопка для начала игры -->
+    <Button
+        android:id="@+id/btnStart"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Начать игру" />
 
 </LinearLayout>
