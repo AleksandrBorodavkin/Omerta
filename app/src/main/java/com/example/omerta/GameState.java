@@ -81,9 +81,20 @@ public class GameState {
         };
     }
 
-    // Проверка, окончена ли игра (если все игроки мертвы)
     public boolean isGameOver() {
-        return players.stream().noneMatch(Player::isAlive);
+        // Подсчет живых красных игроков
+        long redAliveCount = players.stream()
+                .filter(Player::isAlive)
+                .filter(player -> player.getRole().getTeam() == Role.Team.RED)
+                .count();
+
+        // Подсчет живых черных игроков
+        long blackAliveCount = players.stream()
+                .filter(Player::isAlive)
+                .filter(player -> player.getRole().getTeam() == Role.Team.BLACK)
+                .count();
+        // Игра заканчивается, если количество живых красных равно количеству живых черных
+        return redAliveCount == blackAliveCount || blackAliveCount == 0;
     }
 
     // Сброс игры к дефолтным настройкам
