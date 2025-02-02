@@ -4,7 +4,6 @@ import com.example.omerta.model.Player;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import lombok.Data;
 
@@ -12,15 +11,20 @@ import lombok.Data;
 @Data
 public class GameState {
     private static GameState instance;
-    //TODO
-    private  int dayCount =1;
-    // Геттеры и сеттеры
+    private int dayCount = 1;
     private List<Player> players = new ArrayList<>();
     private int totalPlayers = 15;
-    private int mafia = 3;
-    private int mafiaDon = 1;
-    private int commissar = 1;
-    private int doctor = 1;
+
+    private int maxMafia = 3;
+    private int maxMafiaDon = 1;
+    private int maxCommissar = 1;
+    private int maxDoctor = 1;
+
+    // Текущие счетчики (начинаются с 0)
+    private int currentMafia = 0;
+    private int currentMafiaDon = 0;
+    private int currentCommissar = 0;
+    private int currentDoctor = 0;
 
     // Приватный конструктор для реализации Singleton
     private GameState() {
@@ -44,59 +48,35 @@ public class GameState {
         }
     }
 
-    // Увеличение счетчика ролей
     private void incrementRoleCount(Role role) {
         if (role == null) return;
 
         switch (role) {
-            case MAFIA -> mafia++;
-            case MAFIA_DON -> mafiaDon++;
-            case COMMISSAR -> commissar++;
-            case DOCTOR -> doctor++;
-            default -> {
-                // Мирных жителей (CITIZEN) не учитываем явно
-            }
+            case MAFIA -> currentMafia++;
+            case MAFIA_DON -> currentMafiaDon++;
+            case COMMISSAR -> currentCommissar++;
+            case DOCTOR -> currentDoctor++;
         }
     }
 
-    // Уменьшение счетчика ролей
     private void decrementRoleCount(Role role) {
         if (role == null) return;
 
         switch (role) {
-            case MAFIA -> mafia = Math.max(0, mafia - 1);
-            case MAFIA_DON -> mafiaDon = Math.max(0, mafiaDon - 1);
-            case COMMISSAR -> commissar = Math.max(0, commissar - 1);
-            case DOCTOR -> doctor = Math.max(0, doctor - 1);
-            default -> {
-                // Мирных жителей не уменьшаем вручную
-            }
+            case MAFIA -> currentMafia = Math.max(0, currentMafia - 1);
+            case MAFIA_DON -> currentMafiaDon = Math.max(0, currentMafiaDon - 1);
+            case COMMISSAR -> currentCommissar = Math.max(0, currentCommissar - 1);
+            case DOCTOR -> currentDoctor = Math.max(0, currentDoctor - 1);
         }
     }
 
-    // Максимальное количество мафии в игре
-    public int getMaxMafia() {
-        return 9;
-    }
-
-    // Максимальное количество комиссаров в игре
-    public int getMaxCommissar() {
-        return 1;
-    }
-
-    // Максимальное количество докторов в игре
-    public int getMaxDoctor() {
-        return 1;
-    }
-
     // Проверка, доступна ли роль для назначения
-    public boolean isRoleAvailable(Role role, String currentPlayerRole) {
-        if (role.name().equals(currentPlayerRole)) return true;
-
+    public boolean isRoleAvailable(Role role) {
         return switch (role) {
-            case MAFIA -> mafia < getMaxMafia();
-            case COMMISSAR -> commissar < getMaxCommissar();
-            case DOCTOR -> doctor < getMaxDoctor();
+            case MAFIA -> currentMafia < maxMafia;
+            case MAFIA_DON -> currentMafiaDon < maxMafiaDon;
+            case COMMISSAR -> currentCommissar < maxCommissar;
+            case DOCTOR -> currentDoctor < maxDoctor;
             default -> true;
         };
     }
@@ -108,58 +88,25 @@ public class GameState {
 
     // Сброс игры к дефолтным настройкам
     public void reset() {
-        players.clear();
-        mafiaDon = 1;
-        mafia = 3;
-        commissar = 1;
-        doctor = 1;
-        totalPlayers = 15;
+        players.clear(); // Очищаем список игроков
+        dayCount = 1;    // Сбрасываем счетчик дней к начальному значению
+
+        // Сбрасываем максимальные лимиты ролей к дефолтным значениям
+        maxMafiaDon = 1;
+        maxMafia = 3;
+        maxCommissar = 1;
+        maxDoctor = 1;
+
+        // Обнуляем текущие счетчики назначенных ролей
+        currentMafiaDon = 0;
+        currentMafia = 0;
+        currentCommissar = 0;
+        currentDoctor = 0;
+        totalPlayers = 15; // Сбрасываем общее количество игроков к дефолтному
     }
 
-    // Получение количества мирных жителей
-    public int getCitizenCount() {
-        return totalPlayers - (mafia + commissar + doctor);
-    }
-
-    // Получение списка живых игроков
-    public List<Player> getAlivePlayers() {
-        return players.stream()
-                .filter(Player::isAlive)
-                .collect(Collectors.toList());
-    }
     public void incrementDayCount() {
         dayCount++;
-    }
-    public void incrementMafia() {
-        mafia++;
-    }
-
-    public void decrementMafia() {
-        if (mafia > 0) mafia--;
-    }
-
-    public void incrementCommissar() {
-        commissar++;
-    }
-
-    public void decrementCommissar() {
-        if (commissar > 0) commissar--;
-    }
-
-    public void incrementDoctor() {
-        doctor++;
-    }
-
-    public void decrementDoctor() {
-        if (doctor > 0) doctor--;
-    }
-
-    public void incrementMafiaDon() {
-        mafiaDon++;
-    }
-
-    public void decrementMafiaDon() {
-        if (mafiaDon > 0) mafiaDon--;
     }
 
 }

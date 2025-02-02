@@ -102,7 +102,7 @@ public class RoleAssignmentActivity extends AppCompatActivity {
                 }
 
                 for (Role role : allRoles) {
-                    if (role == Role.CITIZEN || gameState.isRoleAvailable(role, currentRole.name())) {
+                    if (role == Role.CITIZEN || gameState.isRoleAvailable(role)) {
                         if (!availableRoles.contains(role)) {
                             availableRoles.add(role);
                         }

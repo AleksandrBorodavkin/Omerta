@@ -34,7 +34,7 @@ public class DayActivity extends BaseActivity {
         TextView playerQuantityBlack = findViewById(R.id.playerQuantityBlack);
         updateAlivePlayersCountBlack(playerQuantityBlack);
         TextView tvDayCount = findViewById(R.id.tvDayCount);
-        updateNightIncrementCount(tvDayCount);
+        updateDayIncrementCount(tvDayCount);
         TextView playerQuantityRed = findViewById(R.id.playerQuantityRed);
         updateAlivePlayersCountRed(playerQuantityRed);
 

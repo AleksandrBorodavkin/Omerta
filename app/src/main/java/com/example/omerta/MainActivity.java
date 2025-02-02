@@ -47,52 +47,63 @@ public class MainActivity extends AppCompatActivity {
 
     // Обработчики для кнопок +/-
     public void onMafiaDonIncrement(View view) {
-        gameState.incrementMafiaDon();
+        gameState.setMaxMafiaDon(gameState.getMaxMafiaDon() + 1);
         updateUI();
     }
 
     public void onMafiaDonDecrement(View view) {
-        gameState.decrementMafiaDon();
+        gameState.setMaxMafiaDon(Math.max(0, gameState.getMaxMafiaDon() - 1));
         updateUI();
     }
 
     public void onMafiaIncrement(View view) {
-        gameState.incrementMafia();
+        gameState.setMaxMafia(gameState.getMaxMafia() + 1);
         updateUI();
     }
 
     public void onMafiaDecrement(View view) {
-        gameState.decrementMafia();
+        gameState.setMaxMafia(Math.max(0, gameState.getMaxMafia() - 1));
         updateUI();
     }
 
     public void onCommissarIncrement(View view) {
-        gameState.incrementCommissar();
+        gameState.setMaxCommissar(gameState.getMaxCommissar() + 1);
         updateUI();
     }
 
     public void onCommissarDecrement(View view) {
-        gameState.decrementCommissar();
+        gameState.setMaxCommissar(Math.max(0, gameState.getMaxCommissar() - 1));
         updateUI();
     }
 
     public void onDoctorIncrement(View view) {
-        gameState.incrementDoctor();
+        gameState.setMaxDoctor(gameState.getMaxDoctor() + 1);
         updateUI();
     }
 
     public void onDoctorDecrement(View view) {
-        gameState.decrementDoctor();
+        gameState.setMaxDoctor(Math.max(0, gameState.getMaxDoctor() - 1));
         updateUI();
     }
 
     private void updateUI() {
+        // Устанавливаем общее количество игроков
         etTotalPlayers.setText(String.valueOf(gameState.getTotalPlayers()));
-        tvMafiaDonCount.setText(String.valueOf(gameState.getMafiaDon()));
-        tvMafiaCount.setText(String.valueOf(gameState.getMafia()));
-        tvCommissarCount.setText(String.valueOf(gameState.getCommissar()));
-        tvDoctorCount.setText(String.valueOf(gameState.getDoctor()));
-        tvCitizenCount.setText("Мирные жители: " + gameState.getCitizenCount());
+
+        // Максимальные значения ролей (лимиты)
+        tvMafiaDonCount.setText(String.valueOf(gameState.getMaxMafiaDon()));
+        tvMafiaCount.setText(String.valueOf(gameState.getMaxMafia()));
+        tvCommissarCount.setText(String.valueOf(gameState.getMaxCommissar()));
+        tvDoctorCount.setText(String.valueOf(gameState.getMaxDoctor()));
+
+        // Мирные жители = Общее число - (Макс. мафия + Дон + Комиссар + Доктор)
+        int citizenCount = gameState.getTotalPlayers()
+                - (gameState.getMaxMafiaDon()
+                + gameState.getMaxMafia()
+                + gameState.getMaxCommissar()
+                + gameState.getMaxDoctor());
+
+        tvCitizenCount.setText("Мирные жители: " + citizenCount);
     }
 
     @Override

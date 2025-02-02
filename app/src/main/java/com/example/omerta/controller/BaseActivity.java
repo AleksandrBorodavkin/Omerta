@@ -43,12 +43,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         // Обновляем текстовое поле с количеством живых игроков
         tvDayIncrementCount.setText(String.format("День № %d",dayCount));
     }
-    protected void updateNightIncrementCount(TextView tvDayIncrementCount) {
+    protected void updateNightIncrementCount(TextView tvNightIncrementCount) {
         int dayCount= GameState.getInstance().getDayCount();
 
 
         // Обновляем текстовое поле с количеством живых игроков
-        tvDayIncrementCount.setText(String.format("Ночь № %d",dayCount));
+        tvNightIncrementCount.setText(String.format("Ночь № %d",dayCount));
     }
     protected void updateAlivePlayersCountRed(TextView playerQuantityRed) {
         Log.d("updateAlivePlayersCountRed", "Method called");
