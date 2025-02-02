@@ -7,15 +7,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 
 @Data
 public class GameState {
     private static GameState instance;
     //TODO
-    private static int dayCount;
+    private  int dayCount =1;
     // Геттеры и сеттеры
     private List<Player> players = new ArrayList<>();
     private int totalPlayers = 15;
@@ -129,7 +127,9 @@ public class GameState {
                 .filter(Player::isAlive)
                 .collect(Collectors.toList());
     }
-
+    public void incrementDayCount() {
+        dayCount++;
+    }
     public void incrementMafia() {
         mafia++;
     }
