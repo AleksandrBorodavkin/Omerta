@@ -7,15 +7,50 @@
     android:padding="16dp"
     tools:context=".MainActivity">
 
+    <!-- Общий стиль для заголовков -->
+    <!-- Здесь используем стандартный sans-serif-medium -->
+
     <!-- Общее количество игроков -->
-    <EditText
-        android:id="@+id/etTotalPlayers"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:hint="Общее количество игроков"
-        android:inputType="number"
-        android:textColor="?attr/colorOnSurface" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-medium"
+            android:text="Общее количество игроков"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="?attr/colorOnSurface" />
+
+        <Button
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onTotalPlayersDecrement"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/tvTotalPlayersCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:fontFamily="sans-serif"
+            android:text="15"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="?attr/colorOnSurface" />
+
+        <Button
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onTotalPlayersIncrement"
+            android:text="+" />
+    </LinearLayout>
 
     <!-- Дон мафии -->
     <LinearLayout
@@ -29,9 +64,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="sans-serif-medium"
             android:text="Дон мафии"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="16sp" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="?attr/colorOnSurface" />
 
         <Button
             style="@style/Widget.Material3.Button.TonalButton"
@@ -45,9 +81,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="8dp"
+            android:fontFamily="sans-serif"
             android:text="0"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="16sp" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="?attr/colorOnSurface" />
 
         <Button
             style="@style/Widget.Material3.Button.TonalButton"
@@ -69,9 +106,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="sans-serif-medium"
             android:text="Мафия"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="16sp" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="?attr/colorOnSurface" />
 
         <Button
             style="@style/Widget.Material3.Button.TonalButton"
@@ -85,9 +123,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="8dp"
+            android:fontFamily="sans-serif"
             android:text="0"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="16sp" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="?attr/colorOnSurface" />
 
         <Button
             style="@style/Widget.Material3.Button.TonalButton"
@@ -109,9 +148,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="sans-serif-medium"
             android:text="Комиссар"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="16sp" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="?attr/colorOnSurface" />
 
         <Button
             style="@style/Widget.Material3.Button.TonalButton"
@@ -125,9 +165,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="8dp"
+            android:fontFamily="sans-serif"
             android:text="0"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="16sp" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="?attr/colorOnSurface" />
 
         <Button
             style="@style/Widget.Material3.Button.TonalButton"
@@ -149,9 +190,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="sans-serif-medium"
             android:text="Доктор"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="16sp" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="?attr/colorOnSurface" />
 
         <Button
             style="@style/Widget.Material3.Button.TonalButton"
@@ -165,9 +207,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="8dp"
+            android:fontFamily="sans-serif"
             android:text="0"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="16sp" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="?attr/colorOnSurface" />
 
         <Button
             style="@style/Widget.Material3.Button.TonalButton"
@@ -189,9 +232,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="sans-serif-medium"
             android:text="Маньяк"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="16sp" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="?attr/colorOnSurface" />
 
         <Button
             style="@style/Widget.Material3.Button.TonalButton"
@@ -205,9 +249,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="8dp"
+            android:fontFamily="sans-serif"
             android:text="0"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="16sp" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="?attr/colorOnSurface" />
 
         <Button
             style="@style/Widget.Material3.Button.TonalButton"
@@ -229,9 +274,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="sans-serif-medium"
             android:text="Якудза"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="16sp" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="?attr/colorOnSurface" />
 
         <Button
             style="@style/Widget.Material3.Button.TonalButton"
@@ -245,9 +291,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="8dp"
+            android:fontFamily="sans-serif"
             android:text="0"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="16sp" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="?attr/colorOnSurface" />
 
         <Button
             style="@style/Widget.Material3.Button.TonalButton"
@@ -269,9 +316,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="sans-serif-medium"
             android:text="Шериф"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="16sp" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="?attr/colorOnSurface" />
 
         <Button
             style="@style/Widget.Material3.Button.TonalButton"
@@ -285,9 +333,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="8dp"
+            android:fontFamily="sans-serif"
             android:text="0"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="16sp" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="?attr/colorOnSurface" />
 
         <Button
             style="@style/Widget.Material3.Button.TonalButton"
@@ -303,9 +352,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:fontFamily="sans-serif-medium"
         android:text="Мирные жители: 0"
-        android:textColor="?attr/colorOnSurface"
-        android:textSize="16sp" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="?attr/colorOnSurface" />
 
     <!-- Кнопка для начала игры -->
     <Button
@@ -315,5 +365,4 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Начать игру" />
-
 </LinearLayout>

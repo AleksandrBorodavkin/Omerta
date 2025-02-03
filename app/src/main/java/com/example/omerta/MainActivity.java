@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvYakuzaCount;
     private TextView tvSheriffCount;
     private TextView tvCitizenCount;
-    private EditText etTotalPlayers;
+    private TextView tvTotalPlayersCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         gameState = GameState.getInstance();
 
         // Инициализация View
-        etTotalPlayers = findViewById(R.id.etTotalPlayers);
+        tvTotalPlayersCount = findViewById(R.id.tvTotalPlayersCount);
         tvMafiaCount = findViewById(R.id.tvMafiaCount);
         tvMafiaDonCount = findViewById(R.id.tvMafiaDonCount);
         tvCommissarCount = findViewById(R.id.tvCommissarCount);
@@ -45,13 +45,20 @@ public class MainActivity extends AppCompatActivity {
 
         Button btnStart = findViewById(R.id.btnStart);
         btnStart.setOnClickListener(v -> {
-            int total = Integer.parseInt(etTotalPlayers.getText().toString());
-            gameState.setTotalPlayers(total);
             startActivity(new Intent(this, PlayerNamesActivity.class));
         });
     }
 
     // Обработчики для кнопок +/-
+    public void onTotalPlayersIncrement(View view) {
+        gameState.setTotalPlayers(gameState.getTotalPlayers() + 1);
+        updateUI();
+    }
+    public void onTotalPlayersDecrement(View view) {
+        gameState.setTotalPlayers(Math.max(10, gameState.getTotalPlayers() - 1)); // Минимум 10 игроков
+        updateUI();
+    }
+
     public void onMafiaDonIncrement(View view) {
         gameState.setMaxMafiaDon(gameState.getMaxMafiaDon() + 1);
         updateUI();
@@ -124,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateUI() {
         // Устанавливаем общее количество игроков
-        etTotalPlayers.setText(String.valueOf(gameState.getTotalPlayers()));
+        tvTotalPlayersCount.setText(String.valueOf(gameState.getTotalPlayers()));
 
         // Максимальные значения ролей (лимиты)
         tvMafiaDonCount.setText(String.valueOf(gameState.getMaxMafiaDon()));
@@ -156,7 +163,4 @@ public class MainActivity extends AppCompatActivity {
         updateUI();
     }
 
-    private void showToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
 }
