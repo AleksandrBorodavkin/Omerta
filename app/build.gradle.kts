@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.omerta"
-        minSdk = 32
+        minSdk = 28
         targetSdk = 35
         versionCode = 1
         versionName = "0.1"
@@ -34,6 +34,8 @@ android {
 
 dependencies {
     implementation(libs.appcompat)
+    implementation(libs.core.ktx)
+    implementation(libs.constraintlayout.v214)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
@@ -42,4 +44,7 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     compileOnly(libs.lombok)
     annotationProcessor(libs.lombok)
+    implementation(libs.activity.v180)
+    implementation(libs.core.ktx.v1120)
+    implementation(libs.core)
 }

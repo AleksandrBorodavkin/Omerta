@@ -20,7 +20,7 @@ public class GameOverActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gameover);
 
         TextView gameOver = findViewById(R.id.gameOver);
-        gameOver.setText(String.format("Игра Окончена!"));
+        gameOver.setText(String.format("Игра Окончена!\nКоманда  %s выиграла!", GameState.getInstance().getWinner()));
         // Кнопка "Ночать заново"
         findViewById(R.id.playAgain).setOnClickListener(v -> {
 

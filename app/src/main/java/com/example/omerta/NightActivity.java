@@ -43,7 +43,6 @@ public class NightActivity extends BaseActivity {
             boolean gameOver = GameState.getInstance().isGameOver();
             Log.d("GameState", "Is game over? " + gameOver);
             if (gameOver) {
-                GameState.getInstance().reset();
                 startActivity(new Intent(this, GameOverActivity.class));
                 finish();
             } else {

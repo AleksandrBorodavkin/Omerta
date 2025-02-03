@@ -12,6 +12,7 @@ import lombok.Data;
 public class GameState {
     private static GameState instance;
     private int dayCount = 1;
+    private Role.Team winner = Role.Team.RED;
     private List<Player> players = new ArrayList<>();
     private int totalPlayers = 15;
 
@@ -110,7 +111,16 @@ public class GameState {
                 .filter(player -> player.getRole().getTeam() == Role.Team.BLACK)
                 .count();
         // Игра заканчивается, если количество живых красных равно количеству живых черных
-        return blackAliveCount >= redAliveCount;
+        boolean gameOver = blackAliveCount >= redAliveCount || blackAliveCount == 0;
+        if (blackAliveCount >= redAliveCount) {
+            // В логике игры мафия (черные) побеждают, когда их число не меньше числа красных.
+            // Поэтому, при окончании игры победителем становится команда BLACK.
+            this.winner = Role.Team.BLACK;
+
+        }
+
+
+        return gameOver;
     }
 
     // Сброс игры к дефолтным настройкам
