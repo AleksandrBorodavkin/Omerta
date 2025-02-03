@@ -110,7 +110,7 @@ public class GameState {
                 .filter(player -> player.getRole().getTeam() == Role.Team.BLACK)
                 .count();
         // Игра заканчивается, если количество живых красных равно количеству живых черных
-        return redAliveCount >= blackAliveCount;
+        return blackAliveCount >= redAliveCount;
     }
 
     // Сброс игры к дефолтным настройкам
@@ -123,7 +123,7 @@ public class GameState {
         maxMafiaDon = 1;
         maxCommissar = 1;
         maxDoctor = 1;
-        maxManiac = 0;
+        maxManiac = 1;
         maxYakuza = 0;
         maxSheriff = 0;
 

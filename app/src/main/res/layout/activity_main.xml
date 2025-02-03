@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,26 +12,26 @@
         android:id="@+id/etTotalPlayers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:hint="Общее количество игроков"
         android:inputType="number"
-        android:layout_marginBottom="16dp"
-        android:textColor="?attr/colorOnSurface"/>
+        android:textColor="?attr/colorOnSurface" />
 
     <!-- Дон мафии -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginBottom="8dp"
         android:gravity="center_vertical"
-        android:layout_marginBottom="8dp">
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Дон мафии"
-            android:textSize="16sp"
-            android:textColor="?attr/colorOnSurface" />
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="16sp" />
 
         <Button
             style="@style/Widget.Material3.Button.TonalButton"
@@ -48,8 +46,8 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="8dp"
             android:text="0"
-            android:textSize="16sp"
-            android:textColor="?attr/colorOnSurface" />
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="16sp" />
 
         <Button
             style="@style/Widget.Material3.Button.TonalButton"
@@ -63,17 +61,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginBottom="8dp"
         android:gravity="center_vertical"
-        android:layout_marginBottom="8dp">
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Мафия"
-            android:textSize="16sp"
-            android:textColor="?attr/colorOnSurface" />
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="16sp" />
 
         <Button
             style="@style/Widget.Material3.Button.TonalButton"
@@ -88,8 +86,8 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="8dp"
             android:text="0"
-            android:textSize="16sp"
-            android:textColor="?attr/colorOnSurface" />
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="16sp" />
 
         <Button
             style="@style/Widget.Material3.Button.TonalButton"
@@ -103,17 +101,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginBottom="8dp"
         android:gravity="center_vertical"
-        android:layout_marginBottom="8dp">
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Комиссар"
-            android:textSize="16sp"
-            android:textColor="?attr/colorOnSurface" />
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="16sp" />
 
         <Button
             style="@style/Widget.Material3.Button.TonalButton"
@@ -128,8 +126,8 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="8dp"
             android:text="0"
-            android:textSize="16sp"
-            android:textColor="?attr/colorOnSurface" />
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="16sp" />
 
         <Button
             style="@style/Widget.Material3.Button.TonalButton"
@@ -143,17 +141,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginBottom="8dp"
         android:gravity="center_vertical"
-        android:layout_marginBottom="16dp">
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Доктор"
-            android:textSize="16sp"
-            android:textColor="?attr/colorOnSurface" />
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="16sp" />
 
         <Button
             style="@style/Widget.Material3.Button.TonalButton"
@@ -168,8 +166,8 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="8dp"
             android:text="0"
-            android:textSize="16sp"
-            android:textColor="?attr/colorOnSurface" />
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="16sp" />
 
         <Button
             style="@style/Widget.Material3.Button.TonalButton"
@@ -179,15 +177,135 @@
             android:text="+" />
     </LinearLayout>
 
+    <!-- Маньяк -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Маньяк"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="16sp" />
+
+        <Button
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onManiacDecrement"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/tvManiacCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:text="0"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="16sp" />
+
+        <Button
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onManiacIncrement"
+            android:text="+" />
+    </LinearLayout>
+
+    <!-- Якудза -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Якудза"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="16sp" />
+
+        <Button
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onYakuzaDecrement"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/tvYakuzaCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:text="0"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="16sp" />
+
+        <Button
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onYakuzaIncrement"
+            android:text="+" />
+    </LinearLayout>
+
+    <!-- Шериф -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Шериф"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="16sp" />
+
+        <Button
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onSheriffDecrement"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/tvSheriffCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:text="0"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="16sp" />
+
+        <Button
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onSheriffIncrement"
+            android:text="+" />
+    </LinearLayout>
+
     <!-- Мирные жители -->
     <TextView
         android:id="@+id/tvCitizenCount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:text="Мирные жители: 0"
-        android:textSize="16sp"
         android:textColor="?attr/colorOnSurface"
-        android:layout_marginBottom="16dp" />
+        android:textSize="16sp" />
 
     <!-- Кнопка для начала игры -->
     <Button
