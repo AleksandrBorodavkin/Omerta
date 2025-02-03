@@ -35,8 +35,10 @@
             android:name=".DayActivity"
             android:exported="false"
             android:label="Дневное голосование" />
-
+        <activity
+            android:name=".GameOverActivity"
+            android:exported="false"
+            android:label="Дневное голосование" />
     </application>
-
 
 </manifest>

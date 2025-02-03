@@ -110,7 +110,7 @@ public class GameState {
                 .filter(player -> player.getRole().getTeam() == Role.Team.BLACK)
                 .count();
         // Игра заканчивается, если количество живых красных равно количеству живых черных
-        return redAliveCount == blackAliveCount || blackAliveCount == 0;
+        return redAliveCount >= blackAliveCount;
     }
 
     // Сброс игры к дефолтным настройкам
